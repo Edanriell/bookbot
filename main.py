@@ -1,14 +1,16 @@
 import sys
 
+from stats import get_char_count
 from stats import get_num_words
-from stats import get_words_count
-from stats import get_sorted_words_count
+from stats import get_sorted_char_count
+
 
 def get_book_text(filePath):
     with open(filePath, encoding="utf-8") as f:
         file_contents = f.read()
 
     return file_contents
+
 
 def main():
     if len(sys.argv) != 2:
@@ -23,8 +25,8 @@ def main():
         sys.exit(1)
 
     count = get_num_words(book_text)
-    words_count = get_words_count(book_text)
-    sorted_letters = get_sorted_words_count(words_count)
+    words_count = get_char_count(book_text)
+    sorted_letters = get_sorted_char_count(words_count)
 
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at books/frankenstein.txt...")
@@ -35,5 +37,6 @@ def main():
         if letter.isalpha():
             print(f"{letter}: {count}")
     print("============= END ===============")
+
 
 main()

@@ -1,21 +1,17 @@
-def get_num_words(text):
-    num_words = len(text.split())
+from collections import Counter
+from typing import Dict, List, Tuple
 
-    return num_words
 
-def get_words_count(text):
-    characters_count = dict()
+def get_num_words(text: str) -> int:
+    """Returns the number of words in the given text."""
+    return len(text.split())
 
-    for character in text:
-        lowerCasedCharacter = character.lower()
 
-        if lowerCasedCharacter in characters_count:
-            characters_count[lowerCasedCharacter] += 1
-        else:
-            characters_count[lowerCasedCharacter] = 1
-        
+def get_char_count(text: str) -> Dict[str, int]:
+    """Returns a dictionary with counts of each character (case-insensitive) in the text."""
+    return Counter(text.lower())
 
-    return characters_count
 
-def get_sorted_words_count(words_count_dict):
-    return sorted(words_count_dict.items(), key=lambda item: item[1], reverse=True)
+def get_sorted_char_count(char_count: Dict[str, int]) -> List[Tuple[str, int]]:
+    """Returns a list of tuples sorted by character frequency in descending order."""
+    return sorted(char_count.items(), key=lambda item: item[1], reverse=True)
