@@ -8,3 +8,6 @@ __pycache__/
 # Ignore Vim swap files
 *.swo
 *.swp
+
+# Idea
+.idea
